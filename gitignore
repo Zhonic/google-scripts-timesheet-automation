@@ -1,0 +1,26 @@
+# Apps Script / clasp
+.clasp.json
+.clasprc.json
+.claspignore
+
+# clasp pulls the manifest as appsscript.json — keep the committed one,
+# ignore any local backup copies
+appsscript.local.json
+
+# Node tooling (if using clasp/eslint locally)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets — never commit real folder/template IDs or admin emails
+*.secret
+secrets.*
+.env
+.env.*
