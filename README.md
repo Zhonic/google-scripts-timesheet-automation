@@ -303,5 +303,26 @@ configuration, not code:
 
 ---
 
+## Repository contents
+
+| File | Purpose |
+| --- | --- |
+| `Code.gs` | The Controller script — all logic. |
+| `appsscript.json` | Project manifest (reference; see the section above). |
+| `Timesheet_Template.xlsx` | Layout reference for the per-employee template. Use the live copy link to deploy. |
+| `README.md` | This file. |
+| `LICENSE` | MIT. |
+| `.gitignore` | **Forward-looking only — it ignores nothing in the repo today.** |
+
+A note on `.gitignore`: this repo is currently just an Apps Script file, a
+manifest, a README and a template reference, so the `.gitignore` doesn't
+physically do anything right now. Its value is forward-looking — if you ever pull
+this into a local [clasp](https://github.com/google/clasp) workflow, it stops you
+committing credentials (`.clasprc.json`, `.clasp.json`), `node_modules`, and
+local secrets. It's included for that future and for consistency across the
+portfolio, not because it's doing work today.
+
+---
+
 *Author: Harnish Patel. Sanitised for portfolio use — all client identifiers,
 folder/template IDs and admin emails have been replaced with placeholders.*
