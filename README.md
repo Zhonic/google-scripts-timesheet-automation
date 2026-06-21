@@ -151,6 +151,36 @@ On first run you'll be asked to authorise scopes (Sheets, Drive, Gmail send).
 
 ---
 
+## Project manifest (`appsscript.json`)
+
+`appsscript.json` is the Apps Script project manifest — the configuration that
+sits around `Code.gs`. It's included here as a **reference** showing the settings
+the deployed project uses; it documents the deployment surface rather than being
+something you must paste in. If you build your own project, match these settings.
+
+What each setting does, and why it matters here:
+
+- **`timeZone` (`Australia/Melbourne`)** — the field you almost certainly need to
+  change. It governs every date calculation: week boundaries, the Monday-start
+  logic, `Utilities.formatDate`, and the month tab names. **Set this to wherever
+  the business operates** — leaving it as Melbourne will silently shift when
+  weeks lock for a deployment in another timezone.
+- **`dependencies.enabledAdvancedServices` (Drive v3)** — declares the Advanced
+  Drive service so `Drive.Permissions.create(...)` resolves to v3. Note that
+  declaring it here does **not** by itself flip the toggle in the editor or
+  enable the Drive API in the underlying Cloud project — you still add it once
+  via **Services (＋) → Drive API** during installation (step 2 above).
+- **`runtimeVersion` (`V8`)** — required. The code uses V8-only features
+  (named regex capture groups, arrow functions, template literals); it will not
+  run on the legacy Rhino runtime.
+- **`oauthScopes`** — the permissions requested at authorisation: `spreadsheets`
+  (read/write sheets), `drive` (create, share, protect files), `script.send_mail`
+  (`MailApp` notifications), `script.scriptapp` (install time-based triggers).
+- **`exceptionLogging` (`STACKDRIVER`)** — routes errors to Cloud Logging / the
+  Executions panel, where the testing steps tell you to look.
+
+---
+
 ## Configuration reference (`Config` sheet)
 
 | Key | Default | Purpose |
